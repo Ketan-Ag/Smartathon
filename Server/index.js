@@ -5,11 +5,20 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost/competitions', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+const url = `mongodb+srv://krish0522:123ABC456@cluster0.9rc8cyz.mongodb.net/?retryWrites=true&w=majority`;
+
+const connectionParams={
+    useNewUrlParser: true,
+    // useCreateIndex: true,
+    useUnifiedTopology: true 
+}
+mongoose.connect(url,connectionParams)
+    .then( () => {
+        console.log('Connected to the database ')
+    })
+    .catch( (err) => {
+        console.error(`Error connecting to the database. n${err}`);
+    })
 
 // Competition model
 const Competition = mongoose.model('Competition', {
