@@ -12,13 +12,13 @@ function App() {
 
   useEffect(() => {
     // Get all competitions on component mount
-    axios.get('http://localhost:3000/competitions').then(res => setCompetitions(res.data));
+    axios.get('http://localhost:8000/competitions').then(res => setCompetitions(res.data));
   }, []);
 
   const handleCreateCompetition = (e) => {
     e.preventDefault();
     // Create a new competition
-    axios.post('http://localhost:3000/competitions', { name, teamSize, details }).then(() => {
+    axios.post('http://localhost:8000/competitions', { name, teamSize, details }).then(() => {
       setName('');
       setTeamSize('');
       setDetails('');
@@ -27,7 +27,7 @@ function App() {
 
   const handleViewRequests = (id) => {
     // View requests for a specific competition
-    axios.get(`http://localhost:3000/competitions/${id}/requests`).then(res => {
+    axios.get(`http://localhost:8000/competitions/${id}/requests`).then(res => {
       setRequests(res.data);
       setSelectedCompetition(id);
     });
@@ -35,7 +35,7 @@ function App() {
 
   const handleAcceptRequest = (user) => {
     // Accept a request for a specific competition
-    axios.post(`http://localhost:3000/competitions/${selectedCompetition}/accept`, { user }).then(() => {
+    axios.post(`http://localhost:8000/competitions/${selectedCompetition}/accept`, { user }).then(() => {
       setRequests(requests.filter(request => request !== user));
       setSelected([...selected, user]);
     });
@@ -43,7 +43,7 @@ function App() {
 
   const handleRejectRequest = (user) => {
     // Reject a request for a specific competition
-    axios.post(`http://localhost:3000/competitions/${selectedCompetition}/reject`, { user }).then(() => {
+    axios.post(`http://localhost:8000/competitions/${selectedCompetition}/reject`, { user }).then(() => {
       setRequests(requests.filter(request => request !== user));
     });
   }
@@ -51,12 +51,12 @@ function App() {
   const handleSendRequest = (id) => {
     // Send a request to join a team
     const user = prompt('Enter your name:');
-    axios.post(`http://localhost:3000/competitions/${id}/requests`, { user });
+    axios.post(`http://localhost:8000/competitions/${id}/requests`, { user });
   }
 
   const handleDeleteCompetition = (id) => {
     // Delete a competition if team is complete
-    axios.delete(`http://localhost:3000/competitions/${id}`);
+    axios.delete(`http://localhost:8000/competitions/${id}`);
   }
 
   return (

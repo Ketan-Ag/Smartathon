@@ -19,7 +19,6 @@ const Competition = mongoose.model('Competition', {
   requests: [String],
   selected: [String]
 });
-
 // Create a new competition
 app.post('/competitions', (req, res) => {
   const { name, teamSize, details } = req.body;
@@ -85,4 +84,4 @@ res.send('Team is not complete yet')
 });
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+app.listen(8000, () => console.log('Server running on port 8000'));
