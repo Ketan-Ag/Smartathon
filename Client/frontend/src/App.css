@@ -1,38 +1,165 @@
-.App {
+/* Add a gradient background to the entire body */
+body {
+  background: linear-gradient(to bottom, #00bcd4, #ff5722);
+}
+
+/* Style the main heading */
+h1 {
   text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px #333;
+  font-size: 4em;
+  margin-top: 3%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Style the form input fields */
+input, textarea {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  font-size: 16px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Style the form submit button */
+button[type="submit"] {
+  width: 100%;
+  background-color: #4CAF50;
   color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+/* Add hover effect to submit button */
+button[type="submit"]:hover {
+  background-color: #3e8e41;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Style the competition container */
+.competition {
+  background-color: #fff;
+  padding: 2%;
+  border-radius: 10px;
+  box-shadow: 2px 2px #ccc;
+  margin: 3% 0;
+}
+
+/* Style the competition name */
+.competition h2 {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 2%;
+}
+
+/* Style the competition details */
+.competition p {
+  font-size: 1.2em;
+  margin-bottom: 2%;
+}
+
+/* Style the request container */
+.requests {
+  background-color: #fff;
+  padding: 2%;
+  border-radius: 10px;
+  box-shadow: 2px 2px #ccc;
+  margin: 3% 0;
+}
+
+/* Style the request list */
+.requests ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Style the request list item */
+.requests li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
+
+/* Style the accept and reject buttons */
+.requests button {
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  margin-left: 2%;
+}
+
+/* Add hover effect to accept and reject buttons */
+.requests button:hover {
+  background-color: #f1f1f1;
+}
+
+/* Style the selected team container */
+.selected {
+  background-color: #fff;
+  padding: 2%;
+  border-radius: 10px;
+  box-shadow: 2px 2px;
+}
+/* Style the selected team list */
+.selected ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Style the selected team list item */
+.selected li {
+  font-size: 1.2em;
+  margin-bottom: 2%;
+}
+
+/* Add some spacing and styling to the buttons */
+button {
+  margin: 2% 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 1.2em;
+  background-color: #ff5722;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+/* Add hover effect to buttons */
+button:hover {
+  background-color: #f44336;
+}
+
+/* Add some spacing and styling to the view requests button */
+button.view-requests {
+  background-color: #00bcd4;
+}
+
+/* Add some spacing and styling to the send request button */
+button.send-request {
+  background-color: #4CAF50;
+}
+
+/* Add some spacing and styling to the delete competition button */
+button.delete-competition {
+  background-color: #f44336;
+}
+
+/* Add some media queries for responsive design */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 3em;
   }
-  to {
-    transform: rotate(360deg);
+  .competition, .requests, .selected {
+    padding: 1%;
+  }
+  button {
+    padding: 8px 12px;
+    font-size: 1em;
   }
 }
