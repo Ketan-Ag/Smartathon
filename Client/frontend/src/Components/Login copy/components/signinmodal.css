@@ -1,0 +1,46 @@
+.modalBackground1 {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(37, 9, 9, 0.162);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modalContainer1 {
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.842) 0px 5px 15px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    display: flex;
+   
+   
+  }
+  
+  
+  
+  .modalclose {
+    /* display: flex; */
+    /* justify-content: flex-end; */
+    color: white;
+    height: 8vh;
+    background-color: rgba(0, 0, 0, 0.83);
+    
+  }
+  
+  .modalclose button {
+    position: absolute;
+    right:1.5em;
+    top:1.5em;
+    color: rgb(6, 166, 6);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all.3s;
+  }
+ 
+  .modalclose button:hover{
+    transform: scale(1.1);
+    color: rgb(77, 255, 0);
+  }
