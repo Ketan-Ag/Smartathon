@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Homepage from './Components/Homepage/Homepage';
 
 function App() {
   const [competitions, setCompetitions] = useState([]);
@@ -61,7 +62,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Competitions</h1>
+      <Homepage/>
+      {/* <h1>Competitions</h1>
       <form onSubmit={handleCreateCompetition}>
         <input
           type="text"
@@ -111,7 +113,7 @@ function App() {
             {selected.map(user => <li key={user}>{user}</li>)}
           </ul>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
