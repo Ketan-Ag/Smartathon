@@ -2,11 +2,13 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors= require('cors');
 
 app.use(bodyParser.json());
-
+app.use(cors({
+  origin:'*'
+}));
 const url = `mongodb+srv://krish0522:123ABC456@cluster0.9rc8cyz.mongodb.net/?retryWrites=true&w=majority`;
-
 const connectionParams={
     useNewUrlParser: true,
     // useCreateIndex: true,
@@ -18,7 +20,7 @@ mongoose.connect(url,connectionParams)
     })
     .catch( (err) => {
         console.error(`Error connecting to the database. n${err}`);
-    })
+    }) 
 
 // Competition model
 const Competition = mongoose.model('Competition', {

@@ -12,16 +12,22 @@ function App() {
 
   useEffect(() => {
     // Get all competitions on component mount
-    axios.get('http://localhost:8000/competitions').then(res => setCompetitions(res.data));
+    axios.get('http://localhost:8000/competitions').then(res => {console.log(res.data);setCompetitions(res.data)});
+    console.log(competitions);
   }, []);
-
   const handleCreateCompetition = (e) => {
     e.preventDefault();
     // Create a new competition
-    axios.post('http://localhost:8000/competitions', { name, teamSize, details }).then(() => {
-      setName('');
-      setTeamSize('');
-      setDetails('');
+    const reqObj ={}; 
+    reqObj.name=name; 
+    reqObj.teamSize=teamSize; 
+    reqObj.details=details; 
+    console.log(reqObj); 
+    axios.post('http://localhost:8000/competitions', reqObj)
+    .then(() => {
+      setName(name);
+      setTeamSize(teamSize);
+      setDetails(details);
     });
   }
 
