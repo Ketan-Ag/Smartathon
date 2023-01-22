@@ -37,7 +37,7 @@ module.exports = async (req, res)=>{
                     requests:req.body.user_id
                 }
             }).then(()=>{
-                console.log("ketan")
+                console.log("abc")
             })
 
             await PostUser.findOneAndUpdate({

@@ -3,14 +3,17 @@ const PostUser = require('../models/postUser');
 
 module.exports = async (req, res)=>{
 
-    const users = await PostUser.find();
-    const user = users.filter(uses => {
-        return uses._id == req.body.user_id
-    })
     const events = await PostCompetition.find();
     const eve = events.filter(even => {
         return even._id == req.body.event_id
     })
+    
+    const users = await PostUser.find();
+    
+    const user = users.filter(uses => {
+        return uses._id == req.body.user_id
+    })
+    
     if(eve[0].selected.length < eve[0].team_size){
         if(user[0].events_applied.includes(req.body.event_id)){
             await PostUser.findOneAndUpdate({
@@ -23,7 +26,10 @@ module.exports = async (req, res)=>{
                     events_applied:req.body.event_id
                 }
             }).then(()=>{
-                console.log("jkjjjg")
+                res.json({
+                    code:11,
+                    message:"Your requested has been accepted"
+                })
             })
 
             await PostCompetition.findOneAndUpdate({
@@ -35,9 +41,24 @@ module.exports = async (req, res)=>{
                 $pull:{
                     requests:req.body.user_id
                 }
-            }).then(()=>{
-                if(eve[0].selected.length == eve[0].team_size){
-                    
+            }).then(async () =>{
+                if(eve[0].selected.length +1 == eve[0].team_size){
+                    await PostUser.findOneAndUpdate({
+                        _id : eve.user_id
+                    },{
+                        $addToSet:{
+                            events_posted_formed:req.body.event_id
+                        },
+                        $pull:{
+                            events_posted:req.body.event_id
+                        }
+                    }).then(()=>{
+                        
+                        res.json({
+                            code:13,
+                            message:"Team successfully formed"
+                        })
+                    })
                 }
             })
         }
