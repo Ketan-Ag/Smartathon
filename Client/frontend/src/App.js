@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Homepage from './Components/Homepage/Homepage';
+// import Homepage from './components/Homepage/Homepage';
+import Home from './components/Homepage/Home';
 
 function App() {
   const [competitions, setCompetitions] = useState([]);
@@ -62,7 +63,7 @@ function App() {
 
   return (
     <div className="App">
-      <Homepage/>
+      <Home/>
       {/* <h1>Competitions</h1>
       <form onSubmit={handleCreateCompetition}>
         <input
