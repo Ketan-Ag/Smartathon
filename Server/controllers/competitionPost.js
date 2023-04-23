@@ -8,12 +8,14 @@ module.exports = async (req, resp)=>{
         return uses._id == req.body.user_id
     })
     if(user.length === 0){
-        res.json({
+        resp.json({
             code:-1,
             message:"Invalid User"
         })
     }
     else{
+        // const newComp = new PostCompetition(req.body);
+        console.log("tmkb")
         const newComp = new PostCompetition(req.body);
         try{
             await newComp.save()
@@ -23,6 +25,7 @@ module.exports = async (req, resp)=>{
             resp.status(409).json({"message":error.message})
         }
         resp.send(req.body.name);
+
 
 
         await PostUser.findOneAndUpdate({

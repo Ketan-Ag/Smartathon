@@ -25,10 +25,6 @@ const postSchema = mongoose.Schema({
         type: [String],
         default:[]
     },
-    requests:{
-        type: [String],
-        default:[]
-    },
     events_applied_approved: {
         type: [String],
         default:[]

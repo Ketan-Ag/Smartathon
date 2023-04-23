@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const postSchema = mongoose.Schema({
+    user_id : String,
     event_name : String,
     team_size: Number,
     details: String,
