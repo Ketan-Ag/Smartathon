@@ -1,0 +1,27 @@
+.home{
+    background: rgb(247,232,180);
+background: linear-gradient(290deg, rgba(247,232,180,1) 14%, rgba(209,177,113,1) 42%, rgba(139,93,33,1) 74%, rgba(108,67,25,1) 95%);
+display: flex;
+position: relative;
+height: 70vh;
+
+}
+.home-content{
+    position: absolute;
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+
+}
+.home-heading{
+    font-size: 3rem;
+    padding: 1rem;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+}
+.post-button{
+    
+}
