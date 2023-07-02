@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const competitionRoute = require('./Routes/competition')
 const compRequestRoute = require('./Routes/compRequests')
-const acceptrequestRoute = require('./Routes/acceptrequest')
-const joinateamRoute = require('./Routes/joinateam')
 const userRoute = require('./Routes/user')
 const cors = require('cors');
 require('dotenv').config()
@@ -34,9 +32,6 @@ mongoose.connect(url,connectionParams)
 app.use('/user', userRoute)
 app.use('/competition', competitionRoute)
 app.use('/request',compRequestRoute)
-
-app.use('/joinateam', joinateamRoute)
-app.use('/acceptrequest', acceptrequestRoute)
 
 
 // Competition model

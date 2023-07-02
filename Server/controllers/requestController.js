@@ -114,7 +114,38 @@ const accept_a_request = async(req,res) => {
     })
 }
 
+const delete_a_request = async(req,res) => {
+    PostCompetition.find({_id:req.body.competitionId}).exec()
+    .then(competitions => {
+        if(competitions.length < 1){
+            return res.status(404).json({error:"No competition found"});
+        }
+        const compi = competitions[0];
+        const ab = compi.requests.filter(request1 => {
+            return request1.name == req.body.name 
+        })
+        
+        if(compi.requests.indexOf(ab[0]) === -1){
+            return res.status(400).json({error:"User is not in the request list"})
+        }
+        compi.requests.splice( compi.requests.indexOf(ab[0]), 1 );
+        compi.save()
+        .then(result => {
+            PostUser.find({name:req.body.name}).exec()
+            .then(users => {
+                const user = users[0];
+                user.events_applied.splice( user.events_applied.indexOf(req.body.competitionId), 1);
+                user.save()
+                .then(resu => {
+                    res.status(200).json({message:"Successfully deleted the request"})
+                }).catch(err => {res.status(500).json({error:err})})
+            }).catch(err => {res.status(500).json({error:err})})
+        }).catch(err => {res.status(500).json({error:err})})
+    }).catch(err => {res.status(500).json({error:err})})
+}
+
 module.exports = {
     post_a_request,
-    accept_a_request
+    accept_a_request,
+    delete_a_request
 };
