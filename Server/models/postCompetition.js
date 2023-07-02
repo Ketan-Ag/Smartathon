@@ -5,8 +5,8 @@ const postSchema = mongoose.Schema({
     event_name : String,
     team_size: Number,
     details: String,
-    requests: [String],
-    selected: [String]
+    requests: [{name: String, email:String}],
+    selected: [{name: String, email:String}]
 });
 
 const PostCompetition = mongoose.model('PostCompetition', postSchema);

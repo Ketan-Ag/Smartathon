@@ -2,18 +2,20 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const competition = require('./Routes/competition')
-const acceptrequest = require('./Routes/acceptrequest')
-const joinateam = require('./Routes/joinateam')
+const competitionRoute = require('./Routes/competition')
+const compRequestRoute = require('./Routes/compRequests')
+const acceptrequestRoute = require('./Routes/acceptrequest')
+const joinateamRoute = require('./Routes/joinateam')
+const userRoute = require('./Routes/user')
 const cors = require('cors');
+require('dotenv').config()
 app.use(cors({
     origin: '*'
 }));
 
 app.use(bodyParser.json());
 
-const url = `mongodb+srv://Smartathon:Smartathon123@cluster0.wjfbppp.mongodb.net/?retryWrites=true&w=majority
-`;
+const url = `${process.env.DATABASE_URI}`;
 
 const connectionParams={
     useNewUrlParser: true,
@@ -29,9 +31,13 @@ mongoose.connect(url,connectionParams)
         console.error(`Error connecting to the database. n${err}`);
     })
 
-app.use('/competition', competition)
-app.use('/joinateam', joinateam)
-app.use('/acceptrequest', acceptrequest)
+app.use('/user', userRoute)
+app.use('/competition', competitionRoute)
+app.use('/request',compRequestRoute)
+
+app.use('/joinateam', joinateamRoute)
+app.use('/acceptrequest', acceptrequestRoute)
+
 
 // Competition model
 // const Competition = mongoose.model('Competition', {
