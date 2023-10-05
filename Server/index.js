@@ -23,7 +23,7 @@ const connectionParams={
 mongoose.connect(url,connectionParams)
     .then( () => {
         console.log('Connected to the database ');
-        app.listen(8000, () => console.log('Server running on port 8000'));
+        app.listen(8000, () => console.log('Server is running on port 8000'));
     })
     .catch( (err) => {
         console.error(`Error connecting to the database. n${err}`);
